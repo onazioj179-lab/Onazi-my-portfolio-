@@ -249,10 +249,61 @@
   .cform .note{font-family:var(--mono);font-size:.62rem;color:var(--mut);letter-spacing:.06em;margin-top:2px}
   .cform .ok{color:var(--accent)}
   @media(max-width:620px){.cform .row{grid-template-columns:1fr}}
+
+  /* ===== LOADER (sharp OJ icon screen) ===== */
+  #loader{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease;animation:loader-auto 0s 4.5s forwards}
+  #loader.done{opacity:0;visibility:hidden}
+  @keyframes loader-auto{to{opacity:0;visibility:hidden}}
+  .loader-mark{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,8vw,4rem);letter-spacing:-.04em;color:var(--paper);text-transform:uppercase}
+  .loader-mark .dotmark{width:11px;height:11px;background:var(--accent);border-radius:50%;animation:pulse 1s ease-in-out infinite}
+  .loader-bar{position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--accent);animation:load-fill 1s cubic-bezier(.5,0,.2,1) forwards}
+  @keyframes load-fill{from{width:0}to{width:100%}}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.55);opacity:.55}}
+
+  /* ===== VISUAL POLISH (real, no images — sharp technical panels) ===== */
+  .visual{cursor:pointer;transition:border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1)}
+  .visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);background-size:36px 36px;opacity:.45;pointer-events:none}
+  .visual:hover{border-color:rgba(255,59,23,.55)}
+  .visual:hover .big{transform:translateY(-3px)}
+  .visual .big{transition:transform .45s cubic-bezier(.16,1,.3,1);position:relative;z-index:1}
+  .visual .vtop,.visual>.tag{position:relative;z-index:1}
+  .visual .open-cue{position:absolute;right:24px;bottom:24px;z-index:1;display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s,color .3s}
+  .visual:hover .open-cue{opacity:1;transform:none;color:var(--accent)}
+
+  /* ===== MODAL (project quick-view) ===== */
+  .modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+  .modal.open{opacity:1;visibility:visible}
+  .modal-scrim{position:absolute;inset:0;background:rgba(6,6,7,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .modal-card{position:relative;width:min(680px,100%);max-height:88vh;overflow:auto;background:var(--panel);border:1px solid var(--line);padding:40px;transform:translateY(18px) scale(.98);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  .modal.open .modal-card{transform:none}
+  .modal-card::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 100% 0%,rgba(255,59,23,.12),transparent 55%);pointer-events:none}
+  .modal-close{position:absolute;top:18px;right:18px;background:none;border:1px solid var(--line);color:var(--paper);width:38px;height:38px;cursor:pointer;font-family:var(--mono);font-size:1rem;transition:border-color .2s,color .2s}
+  .modal-close:hover{border-color:var(--accent);color:var(--accent)}
+  .modal-card .m-idx{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+  .modal-card h3{font-family:var(--disp);font-weight:800;font-size:clamp(2rem,6vw,3rem);letter-spacing:-.03em;text-transform:uppercase;line-height:.96;margin:14px 0 6px}
+  .modal-card .m-role{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:22px}
+  .modal-card .m-sum{font-size:1.12rem;line-height:1.55;margin-bottom:22px}
+  .modal-card .m-cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--ink);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:14px 26px;text-decoration:none;transition:transform .15s,opacity .2s}
+  .modal-card .m-cta:hover{transform:translateY(-2px);opacity:.92}
+
+  /* ===== PAGE TRANSITION WIPE ===== */
+  #wipe{position:fixed;inset:0;z-index:900;background:var(--accent);transform:scaleY(0);transform-origin:bottom;pointer-events:none}
+  #wipe.in{transform:scaleY(1);transform-origin:bottom;transition:transform .5s cubic-bezier(.7,0,.3,1)}
+  #wipe.out{transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.7,0,.3,1)}
+
+  /* ===== ACTIVE NAV ===== */
+  nav a.active{color:var(--accent)}
+
+  @media (prefers-reduced-motion: reduce){
+    .loader-bar,.loader-mark .dotmark{animation:none}
+    #loader{transition:none}
+  }
 </style>
 </head>
 <body>
 
+<div id="loader"><div class="loader-mark">OJ<span class="dotmark"></span></div><div class="loader-bar"></div></div>
+<div id="wipe"></div>
 <div id="progress"></div>
 <div class="cursor-dot" id="cursor"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -332,7 +383,7 @@
     <div class="sec-head reveal"><span class="num">02</span><span class="bar"></span><h2>Selected Work</h2></div>
 
     <!-- DEX -->
-    <article class="project reveal">
+    <article class="project reveal" data-project="dex">
       <div>
         <div class="idx">P / 01</div>
         <h3>DEX</h3>
@@ -346,11 +397,12 @@
         <div class="vtop"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13"/><path d="M3 9h18M8 21h8M12 17v4"/></svg><span class="tag">Desktop / Native</span></div>
         <div class="big">DEX</div>
         <span class="tag">Semi-OS &middot; Control Hub</span>
+        <span class="open-cue">View<svg class="ic" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </div>
     </article>
 
     <!-- WALL STUDIO -->
-    <article class="project reveal">
+    <article class="project reveal" data-project="wallstudio">
       <div>
         <div class="idx">P / 02</div>
         <h3>Wall Studio</h3>
@@ -364,11 +416,12 @@
         <div class="vtop"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21l4-1 11-11-3-3L4 17l-1 4zM14 5l3 3"/></svg><span class="tag">iOS / Creative</span></div>
         <div class="big">Wall<br>Studio</div>
         <span class="tag">Brush Engine</span>
+        <span class="open-cue">View<svg class="ic" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </div>
     </article>
 
     <!-- MAGNIFY -->
-    <article class="project reveal">
+    <article class="project reveal" data-project="magnify">
       <div>
         <div class="idx">P / 03 &middot; Coming Soon</div>
         <h3>Magnify</h3>
@@ -382,11 +435,12 @@
         <div class="vtop"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12h4l2 6 4-12 2 6h6"/></svg><span class="tag">Desktop / Security</span></div>
         <div class="big">Magnify</div>
         <span class="tag">Coming Soon &middot; GitHub Release</span>
+        <span class="open-cue">View<svg class="ic" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </div>
     </article>
 
     <!-- PATH MAP -->
-    <article class="project reveal">
+    <article class="project reveal" data-project="pathmap">
       <div>
         <div class="idx">P / 04 &middot; <a href="https://github.com/onazioj179-lab/pathmap" target="_blank" rel="noopener">github / pathmap</a></div>
         <h3>PathMap</h3>
@@ -400,6 +454,7 @@
         <div class="vtop"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><span class="tag">Web / Security</span></div>
         <div class="big">Path<br>Map</div>
         <span class="tag">Encrypted &middot; Real-Time</span>
+        <span class="open-cue">View<svg class="ic" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </div>
     </article>
   </div>
@@ -471,7 +526,22 @@
   <span>Available &middot; Remote Worldwide</span>
 </footer>
 
-<!-- Motion libraries (CDN, version-pinned) -->
+<!-- PROJECT MODAL (quick-view) -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-scrim" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <button class="modal-close" data-close aria-label="Close">&times;</button>
+    <div class="m-idx" id="m-idx"></div>
+    <h3 id="m-title"></h3>
+    <div class="m-role" id="m-role"></div>
+    <p class="m-sum" id="m-sum"></p>
+    <div class="feat" id="m-feat"></div>
+    <div style="margin-top:28px"><a class="m-cta" id="m-cta" href="#">View full case study<svg class="ic" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+  </div>
+</div>
+
+<!-- Shared project data + motion libraries (CDN, version-pinned) -->
+<script src="projects.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -547,6 +617,7 @@
     let lenis;
     if(typeof Lenis !== 'undefined'){
       lenis = new Lenis({ duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true });
+      window.__lenis = lenis;
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time)=>lenis.raf(time*1000));
       gsap.ticker.lagSmoothing(0);
@@ -597,6 +668,88 @@
   } else {
     // No GSAP or reduced motion: ensure the statement reads fully lit
     document.querySelectorAll('.statement-text .word').forEach(w=>w.classList.add('lit'));
+  }
+
+  // ===== LOADER (sharp OJ icon screen) =====
+  const loader=document.getElementById('loader');
+  function hideLoader(){ if(loader) loader.classList.add('done'); }
+  if(document.readyState==='complete'){ setTimeout(hideLoader,650); }
+  else { addEventListener('load',()=>setTimeout(hideLoader,650)); }
+  setTimeout(hideLoader,3000); // failsafe
+
+  // ===== PROJECT MODAL (quick-view) =====
+  const modal=document.getElementById('modal');
+  if(modal && window.PROJECTS){
+    const mIdx=document.getElementById('m-idx'),mTitle=document.getElementById('m-title'),
+          mRole=document.getElementById('m-role'),mSum=document.getElementById('m-sum'),
+          mFeat=document.getElementById('m-feat'),mCta=document.getElementById('m-cta');
+    let lastFocus=null;
+    function openModal(id){
+      const p=window.PROJECTS[id]; if(!p) return;
+      mIdx.textContent='P / '+p.idx+(p.status?'  ·  '+p.status:'');
+      mTitle.textContent=p.title; mRole.textContent=p.role; mSum.textContent=p.summary;
+      mFeat.innerHTML=p.features.map(f=>'<span>'+f+'</span>').join('');
+      mCta.setAttribute('href','case.html?p='+id);
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+      if(window.__lenis) window.__lenis.stop(); document.body.style.overflow='hidden';
+      lastFocus=document.activeElement; modal.querySelector('.modal-close').focus();
+    }
+    function closeModal(){
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+      if(window.__lenis) window.__lenis.start(); document.body.style.overflow='';
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    document.querySelectorAll('.project[data-project]').forEach(a=>{
+      const id=a.getAttribute('data-project'), vis=a.querySelector('.visual');
+      if(vis){ vis.setAttribute('role','button'); vis.setAttribute('tabindex','0');
+        vis.addEventListener('click',()=>openModal(id));
+        vis.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(id);} });
+      }
+    });
+    modal.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',closeModal));
+    addEventListener('keydown',e=>{ if(e.key==='Escape'&&modal.classList.contains('open')) closeModal(); });
+  }
+
+  // ===== PAGE TRANSITION WIPE (internal .html links) =====
+  const wipe=document.getElementById('wipe');
+  function navigateWithWipe(href){
+    if(!wipe || REDUCED){ location.href=href; return; }
+    wipe.classList.remove('out'); wipe.classList.add('in');
+    setTimeout(()=>{ location.href=href; }, 520);
+  }
+  document.addEventListener('click',(e)=>{
+    const a=e.target.closest('a'); if(!a) return;
+    const href=a.getAttribute('href')||'';
+    if(/\.html(\?|#|$)/.test(href) && !a.target && !href.startsWith('http')){
+      e.preventDefault(); navigateWithWipe(href);
+    }
+  });
+  addEventListener('pageshow',()=>{ if(wipe){ wipe.classList.add('out'); wipe.classList.remove('in'); } });
+
+  // ===== MAGNETIC ELEMENTS =====
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !REDUCED){
+    document.querySelectorAll('.cform button, nav .brand, .m-cta').forEach(el=>{
+      el.style.transition='transform .25s cubic-bezier(.16,1,.3,1)';
+      el.addEventListener('mousemove',e=>{
+        const r=el.getBoundingClientRect();
+        const mx=e.clientX-(r.left+r.width/2), my=e.clientY-(r.top+r.height/2);
+        el.style.transform='translate('+(mx*0.25)+'px,'+(my*0.35)+'px)';
+      });
+      el.addEventListener('mouseleave',()=>{ el.style.transform=''; });
+    });
+  }
+
+  // ===== ACTIVE NAV HIGHLIGHT =====
+  const navLinks=[...document.querySelectorAll('nav .links a')];
+  const navSections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if(navSections.length){
+    const nio=new IntersectionObserver((es)=>{
+      es.forEach(e=>{ if(e.isIntersecting){
+        const id='#'+e.target.id;
+        navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===id));
+      }});
+    },{rootMargin:'-45% 0px -50% 0px'});
+    navSections.forEach(s=>nio.observe(s));
   }
 </script>
 
