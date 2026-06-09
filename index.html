@@ -4,7 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
-<title>Onazi Treasure OJ</title>
+<title>Onazi Treasure OJ — Engineer &amp; Creative Technologist</title>
+<meta name="description" content="Onazi Treasure OJ — full-stack engineer & creative technologist. 4+ years shipping production-grade web, mobile, and desktop applications. Architecture, engineering, UI, and deployment.">
+<meta name="author" content="Onazi Treasure OJ">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="canonical" href="https://onazioj179-lab.github.io/Onazi-my-portfolio-/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Onazi Treasure OJ — Engineer & Creative Technologist">
+<meta property="og:description" content="Full-stack engineer shipping production-grade web, mobile, and desktop applications. Architecture, engineering, UI, and deployment.">
+<meta property="og:url" content="https://onazioj179-lab.github.io/Onazi-my-portfolio-/">
+<meta property="og:image" content="https://onazioj179-lab.github.io/Onazi-my-portfolio-/og.svg">
+<meta property="og:site_name" content="Onazi Treasure OJ">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Onazi Treasure OJ — Engineer & Creative Technologist">
+<meta name="twitter:description" content="Full-stack engineer shipping production-grade web, mobile, and desktop applications.">
+<meta name="twitter:image" content="https://onazioj179-lab.github.io/Onazi-my-portfolio-/og.svg">
+<!-- Favicon: OJ monogram -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%230A0A0B'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Arial,Helvetica,sans-serif'%20font-weight='800'%20font-size='32'%20fill='%23FF3B17'%3EOJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -161,9 +179,48 @@
   /* reveal */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
+
+  /* SCROLL PROGRESS */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:100;transition:width .08s linear;box-shadow:0 0 12px rgba(255,59,23,.6)}
+
+  /* CUSTOM CURSOR */
+  .cursor-dot{position:fixed;top:0;left:0;width:9px;height:9px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:200;transform:translate(-50%,-50%);transition:width .22s ease,height .22s ease,background .22s ease;will-change:left,top}
+  .cursor-dot.big{width:48px;height:48px;background:rgba(255,59,23,.18);border:1px solid rgba(255,59,23,.5)}
+  @media(hover:none),(pointer:coarse){.cursor-dot{display:none!important}}
+
+  /* MARQUEE */
+  .marquee{overflow:hidden;white-space:nowrap;padding:20px 0;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .marquee-track{display:inline-flex;align-items:center;animation:scroll-x 30s linear infinite;will-change:transform}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee i{font-style:normal;font-family:var(--disp);font-weight:800;font-size:clamp(1.3rem,3vw,1.9rem);text-transform:uppercase;letter-spacing:-.01em;padding:0 26px;color:var(--paper)}
+  .marquee i .star{color:var(--accent);padding:0 4px}
+  @keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* STATS */
+  .stats-band{padding:84px 0;border-bottom:1px solid var(--line)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  .stat .n{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,6vw,4.2rem);letter-spacing:-.035em;line-height:1;color:var(--paper)}
+  .stat .l{color:var(--mut);margin-top:12px}
+  @media(max-width:760px){.stats{grid-template-columns:1fr 1fr;gap:36px 22px}}
+
+  /* CONTACT FORM */
+  .cform{margin-top:54px;display:grid;gap:16px;max-width:640px}
+  .cform .row{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+  .cform input,.cform textarea{width:100%;background:transparent;border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:.82rem;letter-spacing:.03em;padding:16px;outline:none;transition:border-color .2s,box-shadow .2s}
+  .cform input:focus,.cform textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,59,23,.12)}
+  .cform textarea{min-height:140px;resize:vertical}
+  .cform input::placeholder,.cform textarea::placeholder{color:var(--mut);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem}
+  .cform button{justify-self:start;background:var(--accent);color:var(--ink);border:none;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:16px 32px;cursor:pointer;transition:transform .15s,opacity .2s}
+  .cform button:hover{opacity:.92;transform:translateY(-2px)}
+  .cform .note{font-family:var(--mono);font-size:.62rem;color:var(--mut);letter-spacing:.06em;margin-top:2px}
+  .cform .ok{color:var(--accent)}
+  @media(max-width:620px){.cform .row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
+<div id="progress"></div>
+<div class="cursor-dot" id="cursor"></div>
 
 <nav>
   <div class="brand">Onazi Treasure OJ</div>
@@ -191,6 +248,26 @@
   </div>
   <div class="scroll-cue mono"><span>Scroll</span><svg class="ic" viewBox="0 0 24 24"><path d="M12 4v16M6 14l6 6 6-6"/></svg></div>
 </header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <i>Engineering<span class="star">&#10039;</span></i><i>Creative Direction<span class="star">&#10039;</span></i><i>Music Production<span class="star">&#10039;</span></i><i>Systems Architecture<span class="star">&#10039;</span></i><i>iOS Development<span class="star">&#10039;</span></i><i>Legal Tech<span class="star">&#10039;</span></i>
+    <i>Engineering<span class="star">&#10039;</span></i><i>Creative Direction<span class="star">&#10039;</span></i><i>Music Production<span class="star">&#10039;</span></i><i>Systems Architecture<span class="star">&#10039;</span></i><i>iOS Development<span class="star">&#10039;</span></i><i>Legal Tech<span class="star">&#10039;</span></i>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="n" data-target="4" data-suffix="+">0</div><div class="l mono">Years Shipping</div></div>
+      <div class="stat"><div class="n" data-target="20" data-suffix="+">0</div><div class="l mono">Inner Apps in DEX</div></div>
+      <div class="stat"><div class="n" data-target="5" data-suffix="">0</div><div class="l mono">Domains</div></div>
+      <div class="stat"><div class="n" data-target="4" data-suffix="">0</div><div class="l mono">Flagship Projects</div></div>
+    </div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -323,6 +400,18 @@
     <div class="sec-head reveal"><span class="num">04</span><span class="bar"></span><h2>Contact</h2></div>
     <div class="reveal">
       <div class="contact-h">Let&rsquo;s build<br>something <span class="ac">exact.</span></div>
+
+      <!-- CONTACT FORM (replace FORM_ID with your Formspree ID — see formspree.io) -->
+      <form class="cform" action="https://formspree.io/f/FORM_ID" method="POST" id="cform">
+        <div class="row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+        </div>
+        <textarea name="message" placeholder="Tell me about the project" required></textarea>
+        <button type="submit">Send Message</button>
+        <div class="note" id="form-note">Direct lines below, or send a message here.</div>
+      </form>
+
       <div class="contact-links">
         <a href="mailto:Onazi75@gmail.com"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg><span>Onazi75@gmail.com</span><svg class="ic arr" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         <a href="tel:+2349135827265"><svg class="ic" viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><span>+234 913 582 7265</span><svg class="ic arr" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
@@ -339,10 +428,62 @@
 </footer>
 
 <script>
+  // Reveal on scroll
   const io=new IntersectionObserver((es)=>{
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Scroll progress bar
+  const prog=document.getElementById('progress');
+  addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const sc=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);
+    prog.style.width=(sc*100)+'%';
+  },{passive:true});
+
+  // Animated stat counters
+  function countUp(el){
+    const target=+el.dataset.target, suf=el.dataset.suffix||'', dur=1500, start=performance.now();
+    (function tick(now){
+      const p=Math.min((now-start)/dur,1), e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(e*target)+suf;
+      if(p<1) requestAnimationFrame(tick);
+    })(start);
+  }
+  const cio=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target)}});
+  },{threshold:.4});
+  document.querySelectorAll('.stat .n').forEach(el=>cio.observe(el));
+
+  // Custom cursor
+  const cur=document.getElementById('cursor');
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';},{passive:true});
+    document.querySelectorAll('a,button,.project,.more-cell,.visual,.contact-links a').forEach(el=>{
+      el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+      el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+    });
+  } else if(cur){ cur.style.display='none'; }
+
+  // Contact form (graceful — only posts if a real Formspree ID is set)
+  const cf=document.getElementById('cform'), note=document.getElementById('form-note');
+  if(cf){
+    cf.addEventListener('submit',async(ev)=>{
+      if(cf.action.includes('FORM_ID')){
+        ev.preventDefault();
+        note.innerHTML='<span class="ok">Form not connected yet — use a direct line below, or set up Formspree.</span>';
+        return;
+      }
+      ev.preventDefault();
+      note.textContent='Sending…';
+      try{
+        const r=await fetch(cf.action,{method:'POST',body:new FormData(cf),headers:{'Accept':'application/json'}});
+        if(r.ok){cf.reset();note.innerHTML='<span class="ok">Message sent. I’ll get back to you.</span>';}
+        else{note.textContent='Something went wrong — email me directly below.';}
+      }catch(_){note.textContent='Network error — email me directly below.';}
+    });
+  }
 </script>
 
 </body>
