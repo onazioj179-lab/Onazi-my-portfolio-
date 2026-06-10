@@ -23,7 +23,7 @@
 <meta name="twitter:description" content="Full-stack engineer shipping production-grade web, mobile, and desktop applications.">
 <meta name="twitter:image" content="https://onazioj179-lab.github.io/Onazi-my-portfolio-/og.svg">
 <!-- Favicon: OJ monogram (adapts to system light/dark) -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cstyle%3Erect%7Bfill:%230A0A0B%7Dtext%7Bfill:%23FF3B17%7D@media(prefers-color-scheme:light)%7Brect%7Bfill:%23FFFFFF%7Dtext%7Bfill:%23D92D0C%7D%7D%3C/style%3E%3Crect%20width='64'%20height='64'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Arial,Helvetica,sans-serif'%20font-weight='800'%20font-size='32'%3EOJ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cstyle%3Erect%7Bfill:%230A0A0B%7Dtext%7Bfill:%2300C8FF%7D@media(prefers-color-scheme:light)%7Brect%7Bfill:%23FFFFFF%7Dtext%7Bfill:%230086B3%7D%7D%3C/style%3E%3Crect%20width='64'%20height='64'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Arial,Helvetica,sans-serif'%20font-weight='800'%20font-size='32'%3EOJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -33,13 +33,13 @@
     --panel:#121214;
     --paper:#F3F1EA;
     --paper-2:#171719;
-    --accent:#FF3B17;
+    --accent:#00C8FF;
     --line:rgba(243,241,234,.16);
     --line-2:rgba(243,241,234,.08);
     --mut:rgba(243,241,234,.50);
     --nav-bg:rgba(10,10,11,.72);
     --scrim:rgba(6,6,7,.78);
-    --glow:rgba(255,59,23,.10);
+    --glow:rgba(0,200,255,.07);
     --disp:'Bricolage Grotesque',sans-serif;
     --body:'Newsreader',serif;
     --mono:'JetBrains Mono',monospace;
@@ -51,13 +51,13 @@
       --panel:#F5F5F7;
       --paper:#0A0A0B;
       --paper-2:#F0F0F2;
-      --accent:#D92D0C;
+      --accent:#0086B3;
       --line:rgba(10,10,11,.16);
       --line-2:rgba(10,10,11,.08);
       --mut:rgba(10,10,11,.55);
       --nav-bg:rgba(255,255,255,.78);
       --scrim:rgba(10,10,11,.45);
-      --glow:rgba(217,45,12,.06);
+      --glow:rgba(0,134,179,.06);
     }
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -93,7 +93,16 @@
   nav .links{display:flex;gap:24px}
   nav a{text-decoration:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);transition:color .2s}
   nav a:hover{color:var(--accent)}
-  @media(max-width:640px){nav .links{display:none}}
+  .menu-btn{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;padding:10px;cursor:pointer;min-width:44px;min-height:44px}
+  .menu-btn span{display:block;width:22px;height:2px;background:var(--paper);transition:transform .3s ease}
+  .menu-btn.open span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+  .menu-btn.open span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+  .mobile-menu{position:fixed;inset:0;z-index:45;background:rgba(10,10,11,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;justify-content:center;padding:80px 30px 40px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+  .mobile-menu.open{opacity:1;visibility:visible}
+  .mobile-menu a{display:flex;align-items:baseline;gap:16px;text-decoration:none;font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,2.6rem);text-transform:uppercase;letter-spacing:-.02em;color:var(--paper);padding:18px 0;border-bottom:1px solid var(--line-2)}
+  .mobile-menu a .mi{font-family:var(--mono);font-size:.64rem;color:var(--accent);letter-spacing:.12em}
+  .mobile-menu .mm-foot{margin-top:auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+  @media(max-width:640px){nav .links{display:none}.menu-btn{display:flex}}
 
   /* HERO */
   header{
@@ -221,7 +230,7 @@
   .statement-text .ac{color:var(--accent)}
 
   /* FILM GRAIN (cinematic luxury layer) */
-  .grain{position:fixed;inset:-50%;z-index:5;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  .grain{position:fixed;inset:-50%;z-index:5;pointer-events:none;opacity:.025;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     animation:grain-shift 1.2s steps(4) infinite}
   @media (prefers-color-scheme: light){.grain{mix-blend-mode:multiply;opacity:.035}}
@@ -244,11 +253,11 @@
   @media(hover:none),(pointer:coarse){.cursor-dot{display:none!important}}
 
   /* MARQUEE */
-  .marquee{overflow:hidden;white-space:nowrap;padding:20px 0;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .marquee-track{display:inline-flex;align-items:center;animation:scroll-x 30s linear infinite;will-change:transform}
+  .marquee{overflow:hidden;white-space:nowrap;padding:13px 0;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .marquee-track{display:inline-flex;align-items:center;animation:scroll-x 44s linear infinite;will-change:transform}
   .marquee:hover .marquee-track{animation-play-state:paused}
-  .marquee i{font-style:normal;font-family:var(--disp);font-weight:800;font-size:clamp(1.3rem,3vw,1.9rem);text-transform:uppercase;letter-spacing:-.01em;padding:0 26px;color:var(--paper)}
-  .marquee i .star{color:var(--accent);padding:0 4px}
+  .marquee i{font-style:normal;font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;padding:0 24px;color:var(--mut)}
+  .marquee i .star{color:var(--accent);padding:0 3px;font-size:.56rem}
   @keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* STATS */
@@ -284,7 +293,7 @@
   /* ===== VISUAL POLISH (real, no images — sharp technical panels) ===== */
   .visual{cursor:pointer;transition:border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1)}
   .visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);background-size:36px 36px;opacity:.45;pointer-events:none}
-  .visual:hover{border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+  .visual:hover{border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
   .visual:hover .big{transform:translateY(-3px)}
   .visual .big{transition:transform .45s cubic-bezier(.16,1,.3,1);position:relative;z-index:1}
   .visual .vtop,.visual>.tag{position:relative;z-index:1}
@@ -306,6 +315,11 @@
   .modal-card .m-sum{font-size:1.12rem;line-height:1.55;margin-bottom:22px}
   .modal-card .m-cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--ink);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:14px 26px;text-decoration:none;transition:transform .15s,opacity .2s}
   .modal-card .m-cta:hover{transform:translateY(-2px);opacity:.92}
+  @media(max-width:620px){
+    .modal{padding:14px}
+    .modal-card{padding:30px 22px;max-height:92vh}
+    .modal-close{top:12px;right:12px;width:44px;height:44px}
+  }
 
   /* ===== PAGE TRANSITION WIPE ===== */
   #wipe{position:fixed;inset:0;z-index:900;background:var(--accent);transform:scaleY(0);transform-origin:bottom;pointer-events:none}
@@ -315,9 +329,18 @@
   /* ===== ACTIVE NAV ===== */
   nav a.active{color:var(--accent)}
 
+  /* ===== FUTURISTIC LAYER ===== */
+  #bg3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6;pointer-events:none}
+  header .wrap,header .scroll-cue{position:relative;z-index:1}
+  .nav-hud{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--mut);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .nav-hud .live{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.6s ease-in-out infinite}
+  @media(max-width:520px){.nav-hud{display:none}}
+  .project .visual{transform-style:preserve-3d}
+
   @media (prefers-reduced-motion: reduce){
-    .loader-bar,.loader-mark .dotmark{animation:none}
+    .loader-bar,.loader-mark .dotmark,.nav-hud .live{animation:none}
     #loader{transition:none}
+    #bg3d{display:none}
   }
 </style>
 </head>
@@ -331,15 +354,26 @@
 
 <nav>
   <div class="brand">Onazi Treasure OJ</div>
+  <div class="nav-hud" aria-hidden="true"><span class="live"></span><span id="hud">ABV --:--:--</span></div>
   <div class="links">
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#more">More</a>
     <a href="#contact">Contact</a>
   </div>
+  <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
 </nav>
 
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about"><span class="mi">01</span>About</a>
+  <a href="#work"><span class="mi">02</span>Work</a>
+  <a href="#more"><span class="mi">03</span>More</a>
+  <a href="#contact"><span class="mi">04</span>Contact</a>
+  <div class="mm-foot">Onazi Treasure OJ &middot; Abuja &middot; Remote Worldwide</div>
+</div>
+
 <header>
+  <canvas id="bg3d" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="eyebrow mono"><span class="dot"></span><span>Full-Stack Engineer &middot; Creative Technologist</span></div>
     <h1>
@@ -566,6 +600,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 
 <script>
   const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -685,6 +720,64 @@
       });
     });
 
+    // 3D tilt on project panels (desktop only)
+    if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+      gsap.utils.toArray('.project .visual').forEach(v=>{
+        gsap.set(v,{transformPerspective:900});
+        v.addEventListener('mousemove',e=>{
+          const r=v.getBoundingClientRect();
+          const rx=((e.clientY-r.top)/r.height-.5)*-6;
+          const ry=((e.clientX-r.left)/r.width-.5)*6;
+          gsap.to(v,{rotationX:rx,rotationY:ry,duration:.5,ease:'power2.out'});
+        });
+        v.addEventListener('mouseleave',()=>gsap.to(v,{rotationX:0,rotationY:0,duration:.8,ease:'power3.out'}));
+      });
+    }
+
+    // 3D hero background — particle field + wireframe geometry (Three.js)
+    const bg=document.getElementById('bg3d');
+    if(bg && typeof THREE!=='undefined'){
+      const headerEl=document.querySelector('header');
+      const renderer=new THREE.WebGLRenderer({canvas:bg,alpha:true,antialias:true,powerPreference:'low-power'});
+      renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+      const scene=new THREE.Scene();
+      const cam=new THREE.PerspectiveCamera(58,1,.1,100); cam.position.z=9;
+      function sizeBg(){const w=headerEl.clientWidth,h=headerEl.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
+      sizeBg(); addEventListener('resize',sizeBg);
+
+      // dust field (paper, faint)
+      const N=520,pos=new Float32Array(N*3);
+      for(let i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*22;pos[i*3+1]=(Math.random()-.5)*12;pos[i*3+2]=(Math.random()-.5)*8;}
+      const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+      const dust=new THREE.Points(pg,new THREE.PointsMaterial({color:0xF3F1EA,size:.025,transparent:true,opacity:.45}));
+      scene.add(dust);
+      // accent sparks
+      const N2=90,pos2=new Float32Array(N2*3);
+      for(let i=0;i<N2;i++){pos2[i*3]=(Math.random()-.5)*20;pos2[i*3+1]=(Math.random()-.5)*11;pos2[i*3+2]=(Math.random()-.5)*7;}
+      const pg2=new THREE.BufferGeometry();pg2.setAttribute('position',new THREE.BufferAttribute(pos2,3));
+      const sparks=new THREE.Points(pg2,new THREE.PointsMaterial({color:0x00C8FF,size:.05,transparent:true,opacity:.8}));
+      scene.add(sparks);
+      // wireframe icosahedron over the accent glow (right side)
+      const ico=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(3.4,1)),new THREE.LineBasicMaterial({color:0xF3F1EA,transparent:true,opacity:.08}));
+      ico.position.set(4.2,1.2,-1); scene.add(ico);
+      const core=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.5,0)),new THREE.LineBasicMaterial({color:0x00C8FF,transparent:true,opacity:.22}));
+      core.position.copy(ico.position); scene.add(core);
+
+      let mx=0,my=0;
+      addEventListener('mousemove',e=>{mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1;},{passive:true});
+      let bgVisible=true;
+      new IntersectionObserver(es=>{bgVisible=es[0].isIntersecting},{threshold:0}).observe(headerEl);
+      gsap.ticker.add((t)=>{
+        if(!bgVisible)return;
+        dust.rotation.y=t*.02; sparks.rotation.y=-t*.016;
+        ico.rotation.y=t*.06; ico.rotation.x=t*.02; core.rotation.y=-t*.09;
+        cam.position.x+=((mx*.9)-cam.position.x)*.04;
+        cam.position.y+=((-my*.5)-cam.position.y)*.04;
+        cam.lookAt(0,0,0);
+        renderer.render(scene,cam);
+      });
+    }
+
     ScrollTrigger.refresh();
   } else {
     // No GSAP or reduced motion: ensure the statement reads fully lit
@@ -771,6 +864,30 @@
       }});
     },{rootMargin:'-45% 0px -50% 0px'});
     navSections.forEach(s=>nio.observe(s));
+  }
+
+  // ===== MOBILE MENU =====
+  const mbtn=document.getElementById('menu-btn'), mmenu=document.getElementById('mobile-menu');
+  if(mbtn && mmenu){
+    const setMenu=(open)=>{
+      mbtn.classList.toggle('open',open); mmenu.classList.toggle('open',open);
+      mbtn.setAttribute('aria-expanded',String(open));
+      document.body.style.overflow=open?'hidden':'';
+      if(window.__lenis){ open?window.__lenis.stop():window.__lenis.start(); }
+    };
+    mbtn.addEventListener('click',()=>setMenu(!mmenu.classList.contains('open')));
+    mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+    addEventListener('keydown',e=>{ if(e.key==='Escape'&&mmenu.classList.contains('open')) setMenu(false); });
+  }
+
+  // ===== HUD CLOCK (Abuja local time) =====
+  const hud=document.getElementById('hud');
+  if(hud){
+    const tick=()=>{
+      try{ hud.textContent='ABV '+new Date().toLocaleTimeString('en-GB',{timeZone:'Africa/Lagos',hour12:false})+' · UTC+1'; }
+      catch(_){ hud.textContent='ABV '+new Date().toLocaleTimeString('en-GB',{hour12:false}); }
+    };
+    tick(); setInterval(tick,1000);
   }
 </script>
 
