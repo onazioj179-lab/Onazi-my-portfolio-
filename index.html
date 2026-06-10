@@ -97,7 +97,7 @@
   .menu-btn span{display:block;width:22px;height:2px;background:var(--paper);transition:transform .3s ease}
   .menu-btn.open span:nth-child(1){transform:translateY(4px) rotate(45deg)}
   .menu-btn.open span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
-  .mobile-menu{position:fixed;inset:0;z-index:45;background:rgba(10,10,11,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;justify-content:center;padding:80px 30px 40px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+  .mobile-menu{position:fixed;inset:0;z-index:45;background:color-mix(in srgb,var(--ink) 97%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-direction:column;justify-content:center;padding:80px 30px 40px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
   .mobile-menu.open{opacity:1;visibility:visible}
   .mobile-menu a{display:flex;align-items:baseline;gap:16px;text-decoration:none;font-family:var(--disp);font-weight:800;font-size:clamp(1.8rem,9vw,2.6rem);text-transform:uppercase;letter-spacing:-.02em;color:var(--paper);padding:18px 0;border-bottom:1px solid var(--line-2)}
   .mobile-menu a .mi{font-family:var(--mono);font-size:.64rem;color:var(--accent);letter-spacing:.12em}
@@ -745,23 +745,39 @@
       function sizeBg(){const w=headerEl.clientWidth,h=headerEl.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
       sizeBg(); addEventListener('resize',sizeBg);
 
-      // dust field (paper, faint)
+      // theme-aware palette — particles must contrast the page bg in BOTH modes
+      const darkMq = matchMedia('(prefers-color-scheme: dark)');
+      const MESH_DARK=0xF3F1EA, MESH_LIGHT=0x0A0A0B, ACC_DARK=0x00C8FF, ACC_LIGHT=0x0086B3;
+
+      // dust field (contrasts the background)
       const N=520,pos=new Float32Array(N*3);
       for(let i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*22;pos[i*3+1]=(Math.random()-.5)*12;pos[i*3+2]=(Math.random()-.5)*8;}
       const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
-      const dust=new THREE.Points(pg,new THREE.PointsMaterial({color:0xF3F1EA,size:.025,transparent:true,opacity:.45}));
-      scene.add(dust);
+      const dustMat=new THREE.PointsMaterial({size:.025,transparent:true});
+      const dust=new THREE.Points(pg,dustMat); scene.add(dust);
       // accent sparks
       const N2=90,pos2=new Float32Array(N2*3);
       for(let i=0;i<N2;i++){pos2[i*3]=(Math.random()-.5)*20;pos2[i*3+1]=(Math.random()-.5)*11;pos2[i*3+2]=(Math.random()-.5)*7;}
       const pg2=new THREE.BufferGeometry();pg2.setAttribute('position',new THREE.BufferAttribute(pos2,3));
-      const sparks=new THREE.Points(pg2,new THREE.PointsMaterial({color:0x00C8FF,size:.05,transparent:true,opacity:.8}));
-      scene.add(sparks);
+      const sparkMat=new THREE.PointsMaterial({size:.05,transparent:true});
+      const sparks=new THREE.Points(pg2,sparkMat); scene.add(sparks);
       // wireframe icosahedron over the accent glow (right side)
-      const ico=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(3.4,1)),new THREE.LineBasicMaterial({color:0xF3F1EA,transparent:true,opacity:.08}));
+      const icoMat=new THREE.LineBasicMaterial({transparent:true});
+      const ico=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(3.4,1)),icoMat);
       ico.position.set(4.2,1.2,-1); scene.add(ico);
-      const core=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.5,0)),new THREE.LineBasicMaterial({color:0x00C8FF,transparent:true,opacity:.22}));
+      const coreMat=new THREE.LineBasicMaterial({transparent:true});
+      const core=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.5,0)),coreMat);
       core.position.copy(ico.position); scene.add(core);
+
+      function applyBgTheme(){
+        const dark=darkMq.matches;
+        dustMat.color.setHex(dark?MESH_DARK:MESH_LIGHT); dustMat.opacity=dark?.45:.5;
+        icoMat.color.setHex(dark?MESH_DARK:MESH_LIGHT);  icoMat.opacity=dark?.08:.16;
+        sparkMat.color.setHex(dark?ACC_DARK:ACC_LIGHT);  sparkMat.opacity=dark?.8:.7;
+        coreMat.color.setHex(dark?ACC_DARK:ACC_LIGHT);   coreMat.opacity=dark?.22:.3;
+      }
+      applyBgTheme();
+      darkMq.addEventListener('change',applyBgTheme);
 
       let mx=0,my=0;
       addEventListener('mousemove',e=>{mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1;},{passive:true});
