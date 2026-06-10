@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light dark">
 <title>Onazi Treasure OJ — Engineer &amp; Creative Technologist</title>
 <meta name="description" content="Onazi Treasure OJ — full-stack engineer & creative technologist. 4+ years shipping production-grade web, mobile, and desktop applications. Architecture, engineering, UI, and deployment.">
 <meta name="author" content="Onazi Treasure OJ">
-<meta name="theme-color" content="#0A0A0B">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0B">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F2EC">
 <link rel="canonical" href="https://onazioj179-lab.github.io/Onazi-my-portfolio-/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -21,8 +22,8 @@
 <meta name="twitter:title" content="Onazi Treasure OJ — Engineer & Creative Technologist">
 <meta name="twitter:description" content="Full-stack engineer shipping production-grade web, mobile, and desktop applications.">
 <meta name="twitter:image" content="https://onazioj179-lab.github.io/Onazi-my-portfolio-/og.svg">
-<!-- Favicon: OJ monogram -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%230A0A0B'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Arial,Helvetica,sans-serif'%20font-weight='800'%20font-size='32'%20fill='%23FF3B17'%3EOJ%3C/text%3E%3C/svg%3E">
+<!-- Favicon: OJ monogram (adapts to system light/dark) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cstyle%3Erect%7Bfill:%230A0A0B%7Dtext%7Bfill:%23FF3B17%7D@media(prefers-color-scheme:light)%7Brect%7Bfill:%23F4F2EC%7Dtext%7Bfill:%23D92D0C%7D%7D%3C/style%3E%3Crect%20width='64'%20height='64'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Arial,Helvetica,sans-serif'%20font-weight='800'%20font-size='32'%3EOJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -36,12 +37,31 @@
     --line:rgba(243,241,234,.16);
     --line-2:rgba(243,241,234,.08);
     --mut:rgba(243,241,234,.50);
+    --nav-bg:rgba(10,10,11,.72);
+    --scrim:rgba(6,6,7,.78);
+    --glow:rgba(255,59,23,.10);
     --disp:'Bricolage Grotesque',sans-serif;
     --body:'Newsreader',serif;
     --mono:'JetBrains Mono',monospace;
   }
+  /* Light mode — same house, daylight showroom. Follows the system theme automatically. */
+  @media (prefers-color-scheme: light){
+    :root{
+      --ink:#F4F2EC;
+      --panel:#ECE9E0;
+      --paper:#0A0A0B;
+      --paper-2:#E7E4DB;
+      --accent:#D92D0C;
+      --line:rgba(10,10,11,.18);
+      --line-2:rgba(10,10,11,.09);
+      --mut:rgba(10,10,11,.55);
+      --nav-bg:rgba(244,242,236,.78);
+      --scrim:rgba(10,10,11,.45);
+      --glow:rgba(217,45,12,.07);
+    }
+  }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;background:var(--ink);color-scheme:dark}
+  html{scroll-behavior:smooth;background:var(--ink);color-scheme:light dark}
   body{
     background:var(--ink);
     color:var(--paper);
@@ -50,7 +70,7 @@
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
-    background-image:radial-gradient(120% 80% at 80% -10%, rgba(255,59,23,.10), transparent 60%);
+    background-image:radial-gradient(120% 80% at 80% -10%, var(--glow), transparent 60%);
   }
   ::selection{background:var(--accent);color:var(--ink)}
   a{color:inherit}
@@ -64,7 +84,7 @@
     position:fixed;top:0;left:0;right:0;z-index:50;
     display:flex;justify-content:space-between;align-items:center;
     padding:16px 28px;
-    background:rgba(10,10,11,.72);
+    background:var(--nav-bg);
     backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line-2);
     color:var(--paper);
@@ -143,7 +163,7 @@
     aspect-ratio:4/3;border:1px solid var(--line);background:var(--panel);color:var(--paper);
     display:flex;flex-direction:column;justify-content:space-between;padding:24px;position:relative;overflow:hidden;
   }
-  .visual::after{content:"";position:absolute;inset:0;background:radial-gradient(100% 70% at 100% 0%, rgba(255,59,23,.12), transparent 55%);pointer-events:none}
+  .visual::after{content:"";position:absolute;inset:0;background:radial-gradient(100% 70% at 100% 0%, var(--glow), transparent 55%);pointer-events:none}
   .visual.lite{background:transparent;border:1px dashed var(--line)}
   .visual .vtop{display:flex;justify-content:space-between;align-items:center}
   .visual .vtop .ic{font-size:1.25rem;color:var(--accent)}
@@ -204,6 +224,7 @@
   .grain{position:fixed;inset:-50%;z-index:5;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     animation:grain-shift 1.2s steps(4) infinite}
+  @media (prefers-color-scheme: light){.grain{mix-blend-mode:multiply;opacity:.035}}
   @keyframes grain-shift{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-2%)}75%{transform:translate(-2%,-3%)}100%{transform:translate(2%,2%)}}
 
   @media (prefers-reduced-motion: reduce){
@@ -215,11 +236,11 @@
   }
 
   /* SCROLL PROGRESS */
-  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:100;transition:width .08s linear;box-shadow:0 0 12px rgba(255,59,23,.6)}
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:100;transition:width .08s linear;box-shadow:0 0 12px color-mix(in srgb,var(--accent) 60%,transparent)}
 
   /* CUSTOM CURSOR */
   .cursor-dot{position:fixed;top:0;left:0;width:9px;height:9px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:200;transform:translate(-50%,-50%);transition:width .22s ease,height .22s ease,background .22s ease;will-change:left,top}
-  .cursor-dot.big{width:48px;height:48px;background:rgba(255,59,23,.18);border:1px solid rgba(255,59,23,.5)}
+  .cursor-dot.big{width:48px;height:48px;background:color-mix(in srgb,var(--accent) 18%,transparent);border:1px solid color-mix(in srgb,var(--accent) 50%,transparent)}
   @media(hover:none),(pointer:coarse){.cursor-dot{display:none!important}}
 
   /* MARQUEE */
@@ -241,7 +262,7 @@
   .cform{margin-top:54px;display:grid;gap:16px;max-width:640px}
   .cform .row{display:grid;gap:16px;grid-template-columns:1fr 1fr}
   .cform input,.cform textarea{width:100%;background:transparent;border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:.82rem;letter-spacing:.03em;padding:16px;outline:none;transition:border-color .2s,box-shadow .2s}
-  .cform input:focus,.cform textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,59,23,.12)}
+  .cform input:focus,.cform textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
   .cform textarea{min-height:140px;resize:vertical}
   .cform input::placeholder,.cform textarea::placeholder{color:var(--mut);text-transform:uppercase;letter-spacing:.12em;font-size:.66rem}
   .cform button{justify-self:start;background:var(--accent);color:var(--ink);border:none;font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:16px 32px;cursor:pointer;transition:transform .15s,opacity .2s}
@@ -263,7 +284,7 @@
   /* ===== VISUAL POLISH (real, no images — sharp technical panels) ===== */
   .visual{cursor:pointer;transition:border-color .35s ease,transform .35s cubic-bezier(.16,1,.3,1)}
   .visual::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);background-size:36px 36px;opacity:.45;pointer-events:none}
-  .visual:hover{border-color:rgba(255,59,23,.55)}
+  .visual:hover{border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
   .visual:hover .big{transform:translateY(-3px)}
   .visual .big{transition:transform .45s cubic-bezier(.16,1,.3,1);position:relative;z-index:1}
   .visual .vtop,.visual>.tag{position:relative;z-index:1}
@@ -273,10 +294,10 @@
   /* ===== MODAL (project quick-view) ===== */
   .modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
   .modal.open{opacity:1;visibility:visible}
-  .modal-scrim{position:absolute;inset:0;background:rgba(6,6,7,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .modal-scrim{position:absolute;inset:0;background:var(--scrim);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .modal-card{position:relative;width:min(680px,100%);max-height:88vh;overflow:auto;background:var(--panel);border:1px solid var(--line);padding:40px;transform:translateY(18px) scale(.98);transition:transform .4s cubic-bezier(.16,1,.3,1)}
   .modal.open .modal-card{transform:none}
-  .modal-card::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 100% 0%,rgba(255,59,23,.12),transparent 55%);pointer-events:none}
+  .modal-card::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 100% 0%,var(--glow),transparent 55%);pointer-events:none}
   .modal-close{position:absolute;top:18px;right:18px;background:none;border:1px solid var(--line);color:var(--paper);width:38px;height:38px;cursor:pointer;font-family:var(--mono);font-size:1rem;transition:border-color .2s,color .2s}
   .modal-close:hover{border-color:var(--accent);color:var(--accent)}
   .modal-card .m-idx{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
