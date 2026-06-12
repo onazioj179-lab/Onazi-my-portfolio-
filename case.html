@@ -18,7 +18,10 @@
     --line:rgba(243,241,234,.16);--line-2:rgba(243,241,234,.08);--mut:rgba(243,241,234,.50);
     --nav-bg:rgba(10,10,11,.72);--glow:rgba(0,200,255,.07);
     --disp:'Bricolage Grotesque',sans-serif;--body:'Newsreader',serif;--mono:'JetBrains Mono',monospace;
+    --r:8px;
   }
+  .shot,.access-panel,.feat span,.c-tag,.ap-link.dl,.lightbox img,.lb-close{border-radius:var(--r)}
+  main,section{scroll-margin-top:74px}
   /* Light mode — follows the system theme automatically. */
   @media (prefers-color-scheme: light){
     :root{
@@ -44,9 +47,6 @@
   .loader-mark{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,8vw,4rem);letter-spacing:-.04em;color:var(--paper);text-transform:uppercase}
   .loader-mark .dotmark{width:11px;height:11px;background:var(--accent);border-radius:50%;animation:pulse 1s ease-in-out infinite}
   @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.55);opacity:.55}}
-  #wipe{position:fixed;inset:0;z-index:900;background:var(--accent);transform:scaleY(0);transform-origin:bottom;pointer-events:none}
-  #wipe.in{transform:scaleY(1);transform-origin:bottom;transition:transform .5s cubic-bezier(.7,0,.3,1)}
-  #wipe.out{transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.7,0,.3,1)}
   #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:100;transition:width .08s linear;box-shadow:0 0 12px color-mix(in srgb,var(--accent) 60%,transparent)}
   .cursor-dot{position:fixed;top:0;left:0;width:9px;height:9px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:200;transform:translate(-50%,-50%);transition:width .22s,height .22s,background .22s}
   .cursor-dot.big{width:48px;height:48px;background:color-mix(in srgb,var(--accent) 18%,transparent);border:1px solid color-mix(in srgb,var(--accent) 50%,transparent)}
@@ -102,8 +102,8 @@
   /* gallery — stacked app screens, softly rounded */
   .gallery{margin-top:80px;padding-top:50px;border-top:1px solid var(--line)}
   .gallery .g-h{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
-  .gallery-grid{display:flex;flex-direction:column;gap:30px;max-width:940px}
-  .shot{position:relative;border:1px solid var(--line);background:var(--panel);overflow:hidden;border-radius:14px;transition:border-color .3s ease,transform .4s cubic-bezier(.16,1,.3,1)}
+  .gallery-grid{display:flex;flex-direction:column;gap:28px}
+  .shot{position:relative;border:1px solid var(--line);background:var(--panel);overflow:hidden;transition:border-color .3s ease,transform .4s cubic-bezier(.16,1,.3,1)}
   .shot:hover{border-color:color-mix(in srgb,var(--accent) 42%,transparent);transform:translateY(-3px)}
   .shot .bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--ink) 55%,transparent)}
   .shot .bar i{width:9px;height:9px;border-radius:50%;background:var(--mut);opacity:.45;display:block}
@@ -118,14 +118,13 @@
   .shot .ph{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center;padding:20px;background:
     linear-gradient(color-mix(in srgb,var(--paper) 4%,transparent) 1px,transparent 1px) 0 0/100% 34px}
   .shot .cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--mut);padding:13px 16px;border-top:1px solid var(--line)}
-  @media(max-width:760px){.gallery{margin-top:56px}.gallery-grid{gap:22px}.shot{border-radius:12px}}
+  @media(max-width:760px){.gallery{margin-top:56px}.gallery-grid{gap:22px}}
 
   @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;filter:none}.grain,.loader-mark .dotmark{animation:none}#wipe{display:none}}
 </style>
 </head>
 <body>
 
-<div id="wipe"></div>
 <div id="progress"></div>
 <div class="cursor-dot" id="cursor"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -254,19 +253,7 @@
   addEventListener('load',revealAll);
   setTimeout(revealAll,800);
 
-  // Wipe: reveal on entry, cover on internal navigation
-  const wipe=document.getElementById('wipe');
-  addEventListener('pageshow',()=>{ if(wipe){ wipe.classList.add('out'); wipe.classList.remove('in'); } });
-  document.addEventListener('click',(e)=>{
-    const a=e.target.closest('a'); if(!a) return;
-    const href=a.getAttribute('href')||'';
-    if(/\.html(\?|#|$)/.test(href) && !a.target && !href.startsWith('http')){
-      e.preventDefault();
-      if(!wipe||REDUCED){ location.href=href; return; }
-      wipe.classList.remove('out'); wipe.classList.add('in');
-      setTimeout(()=>{ location.href=href; },520);
-    }
-  });
+  // Internal links navigate normally — no transition overlay.
 
   // Progress bar
   const prog=document.getElementById('progress');

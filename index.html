@@ -43,7 +43,12 @@
     --disp:'Bricolage Grotesque',sans-serif;
     --body:'Newsreader',serif;
     --mono:'JetBrains Mono',monospace;
+    --r:8px;
   }
+  /* Consistent rounding + clean section rhythm across the whole page */
+  .visual,.modal-card,.modal-close,.more-cell,.cform input,.cform textarea,.cform button,
+  .m-cta,.feat span,.c-tag,.beat audio,.beat .b-soon,.beats-cta{border-radius:var(--r)}
+  section[id],header{scroll-margin-top:74px}
   /* Light mode — same house, daylight showroom. Follows the system theme automatically. */
   @media (prefers-color-scheme: light){
     :root{
@@ -134,7 +139,8 @@
   @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 
   /* SECTION SHELL */
-  section{padding:120px 0;border-bottom:1px solid var(--line)}
+  section{padding:104px 0;border-bottom:1px solid var(--line)}
+  @media(max-width:640px){section{padding:68px 0}}
   .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:58px}
   .sec-head .num{font-family:var(--mono);font-size:.74rem;color:var(--accent);letter-spacing:.1em}
   .sec-head .bar{height:1px;flex:1;background:var(--line)}
@@ -193,7 +199,7 @@
   @media(max-width:760px){.more-grid{grid-template-columns:1fr}}
 
   /* CONTACT */
-  #contact{border-bottom:none;padding-bottom:140px}
+  #contact{border-bottom:none;padding-bottom:112px}
   .contact-h{font-family:var(--disp);font-weight:800;font-size:clamp(2.4rem,8vw,6rem);letter-spacing:-.035em;line-height:.94;text-transform:uppercase}
   .contact-h .ac{color:var(--accent)}
   .contact-links{display:flex;flex-direction:column;margin-top:46px;border-top:1px solid var(--line)}
@@ -222,7 +228,8 @@
   h1 .w.ac{color:var(--accent)}
 
   /* STATEMENT (Apple/Balenciaga pinned big-type moment) */
-  .statement{min-height:100vh;display:flex;align-items:center;padding:120px 0;border-bottom:1px solid var(--line);overflow:hidden}
+  .statement{min-height:86vh;display:flex;align-items:center;padding:104px 0;border-bottom:1px solid var(--line);overflow:hidden}
+  @media(max-width:640px){.statement{min-height:auto;padding:80px 0}}
   .statement-text{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(2.2rem,7.4vw,6.4rem);line-height:1.0;letter-spacing:-.035em;max-width:15ch}
   .statement-text .word{display:inline-block;opacity:.14;transition:opacity .35s ease}
   .statement-text .word.lit{opacity:1}
@@ -265,6 +272,18 @@
   .stat .n{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,6vw,4.2rem);letter-spacing:-.035em;line-height:1;color:var(--paper)}
   .stat .l{color:var(--mut);margin-top:12px}
   @media(max-width:760px){.stats{grid-template-columns:1fr 1fr;gap:36px 22px}}
+
+  /* SOUND / BEATS */
+  .sound-intro{font-size:1.18rem;line-height:1.6;max-width:560px;margin-bottom:40px;color:var(--paper)}
+  .beats{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .beat{display:flex;align-items:center;gap:22px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .beat .b-no{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--accent);flex:none;width:52px}
+  .beat .b-main{flex:1;min-width:0}
+  .beat .b-title{font-family:var(--disp);font-weight:700;font-size:1.22rem;letter-spacing:-.01em}
+  .beat .b-meta{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-top:5px}
+  .beat audio{height:40px;width:42%;max-width:340px;flex:none}
+  .beat .b-soon{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border:1px solid var(--line);padding:8px 13px;flex:none}
+  @media(max-width:620px){.beat{flex-wrap:wrap;gap:12px}.beat audio{width:100%;max-width:none}.beat .b-no{width:auto}}
 
   /* CONTACT FORM */
   .cform{margin-top:54px;display:grid;gap:16px;max-width:640px}
@@ -320,11 +339,6 @@
     .modal-close{top:12px;right:12px;width:44px;height:44px}
   }
 
-  /* ===== PAGE TRANSITION WIPE ===== */
-  #wipe{position:fixed;inset:0;z-index:900;background:var(--accent);transform:scaleY(0);transform-origin:bottom;pointer-events:none}
-  #wipe.in{transform:scaleY(1);transform-origin:bottom;transition:transform .5s cubic-bezier(.7,0,.3,1)}
-  #wipe.out{transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.7,0,.3,1)}
-
   /* ===== ACTIVE NAV ===== */
   nav a.active{color:var(--accent)}
 
@@ -345,7 +359,6 @@
 </head>
 <body>
 
-<div id="wipe"></div>
 <div id="progress"></div>
 <div class="cursor-dot" id="cursor"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -357,6 +370,7 @@
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#more">More</a>
+    <a href="#sound">Sound</a>
     <a href="#contact">Contact</a>
   </div>
   <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
@@ -366,7 +380,8 @@
   <a href="#about"><span class="mi">01</span>About</a>
   <a href="#work"><span class="mi">02</span>Work</a>
   <a href="#more"><span class="mi">03</span>More</a>
-  <a href="#contact"><span class="mi">04</span>Contact</a>
+  <a href="#sound"><span class="mi">04</span>Sound</a>
+  <a href="#contact"><span class="mi">05</span>Contact</a>
   <div class="mm-foot">Onazi Treasure OJ &middot; Abuja &middot; Remote Worldwide</div>
 </div>
 
@@ -537,6 +552,23 @@
   </div>
 </section>
 
+<!-- SOUND / BEATS -->
+<section id="sound">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">04</span><span class="bar"></span><h2>Sound</h2></div>
+    <p class="sound-intro reveal">Original beats and production. Tracks drop in here &mdash; more coming soon.</p>
+    <!-- To publish a beat: drop the file in /assets/beats, set the title, and swap
+         the <span class="b-soon"> for: <audio class="b-audio" controls preload="none" src="assets/beats/beat-01.mp3"></audio> -->
+    <div class="beats reveal">
+      <div class="beat"><span class="b-no">B / 01</span><div class="b-main"><div class="b-title">Untitled Beat 01</div><div class="b-meta">Coming soon</div></div><span class="b-soon">Soon</span></div>
+      <div class="beat"><span class="b-no">B / 02</span><div class="b-main"><div class="b-title">Untitled Beat 02</div><div class="b-meta">Coming soon</div></div><span class="b-soon">Soon</span></div>
+      <div class="beat"><span class="b-no">B / 03</span><div class="b-main"><div class="b-title">Untitled Beat 03</div><div class="b-meta">Coming soon</div></div><span class="b-soon">Soon</span></div>
+      <div class="beat"><span class="b-no">B / 04</span><div class="b-main"><div class="b-title">Untitled Beat 04</div><div class="b-meta">Coming soon</div></div><span class="b-soon">Soon</span></div>
+      <div class="beat"><span class="b-no">B / 05</span><div class="b-main"><div class="b-title">Untitled Beat 05</div><div class="b-meta">Coming soon</div></div><span class="b-soon">Soon</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- STATEMENT -->
 <section class="statement" id="statement" aria-label="Statement">
   <div class="wrap">
@@ -549,7 +581,7 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">04</span><span class="bar"></span><h2>Contact</h2></div>
+    <div class="sec-head reveal"><span class="num">05</span><span class="bar"></span><h2>Contact</h2></div>
     <div class="reveal">
       <div class="contact-h">Let&rsquo;s build<br>something <span class="ac">exact.</span></div>
 
@@ -845,21 +877,7 @@
     addEventListener('keydown',e=>{ if(e.key==='Escape'&&modal.classList.contains('open')) closeModal(); });
   }
 
-  // ===== PAGE TRANSITION WIPE (internal .html links) =====
-  const wipe=document.getElementById('wipe');
-  function navigateWithWipe(href){
-    if(!wipe || REDUCED){ location.href=href; return; }
-    wipe.classList.remove('out'); wipe.classList.add('in');
-    setTimeout(()=>{ location.href=href; }, 520);
-  }
-  document.addEventListener('click',(e)=>{
-    const a=e.target.closest('a'); if(!a) return;
-    const href=a.getAttribute('href')||'';
-    if(/\.html(\?|#|$)/.test(href) && !a.target && !href.startsWith('http')){
-      e.preventDefault(); navigateWithWipe(href);
-    }
-  });
-  addEventListener('pageshow',()=>{ if(wipe){ wipe.classList.add('out'); wipe.classList.remove('in'); } });
+  // Internal links navigate normally — no transition overlay.
 
   // ===== MAGNETIC ELEMENTS =====
   if(matchMedia('(hover:hover) and (pointer:fine)').matches && !REDUCED){
