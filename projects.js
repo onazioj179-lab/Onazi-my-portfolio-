@@ -37,8 +37,14 @@ window.PROJECTS = {
       'No fake data: everything you see is real and from your own device. If a signal isn’t available, Magnify says so instead of guessing. Proprietary software — not open source.'
     ],
     features:['System Monitor','Privacy Scanner','Process Scoring','Spyware / Stalkerware Detection','Workspace Mapping','100% On-Device'],
-    access:{ label:'Release', value:'Coming soon — GitHub release. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
-    link:null
+    access:{ label:'Download', value:'Early Windows build (v0.8.2, x64) available now. Full GitHub release coming soon. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    gallery:[
+      { src:'assets/magnify/overview.png',    label:'Overview — live system dashboard, scan & report' },
+      { src:'assets/magnify/observatory.png', label:'Observatory — environment & knowledge health' },
+      { src:'assets/magnify/privacy.png',     label:'Privacy — risk score, permissions & trackers' },
+      { src:'assets/magnify/priorities.png',  label:'Priorities — findings graph & impact ranking' }
+    ],
+    link:{ href:'https://github.com/onazioj179-lab/dex-updates/releases/download/magnify-v0.8.2/Magnify_0.8.2_x64-setup.exe', label:'Download Magnify 0.8.2 · Windows x64' }
   },
   pathmap: {
     idx:'04', title:'PathMap', role:'Encrypted real-time location for private teams',
