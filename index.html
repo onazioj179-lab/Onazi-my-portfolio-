@@ -330,7 +330,7 @@
   nav a.active{color:var(--accent)}
 
   /* ===== FUTURISTIC LAYER ===== */
-  #bg3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6;pointer-events:none}
+  #bg3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.78;pointer-events:none}
   header .wrap,header .scroll-cue{position:relative;z-index:1}
   .nav-hud{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--mut);text-transform:uppercase;display:flex;align-items:center;gap:8px}
   .nav-hud .live{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.6s ease-in-out infinite}
@@ -481,7 +481,7 @@
         <div class="idx">P / 03 &middot; Coming Soon</div>
         <h3>Magnify</h3>
         <div class="role">Live System Monitor &middot; Privacy Scanner &middot; Workspace</div>
-        <p class="desc">A live system monitor, privacy scanner, and visual workspace for understanding your digital environment. It watches CPU, memory, network and running programs in plain language &mdash; scoring every process and flagging spyware, stalkerware, and connections to known-bad servers. It scans trackers, fingerprinting and risky permissions with clear do-this-next guidance, then turns any folder into a living map of how your files, media and configs connect &mdash; search everything, compare folders, and pin findings into saved investigations. No fake data: everything is real and from your own device. Proprietary software &mdash; not open source.</p>
+        <p class="desc">A live system monitor, privacy scanner, and visual workspace for understanding your digital environment. It watches CPU, memory, network and running programs in plain language &mdash; scoring every process and flagging spyware, stalkerware, and connections to known-bad servers. It scans trackers, fingerprinting and risky permissions with clear do-this-next guidance, then turns any folder into a living map of how your files, media and configs connect &mdash; search everything, compare folders, and pin findings into saved investigations. No fake data: everything is real and from your own device.</p>
         <div class="feat">
           <span>System Monitor</span><span>Privacy Scanner</span><span>Process Scoring</span><span>Spyware / Stalkerware Detection</span><span>Workspace Mapping</span><span>100% On-Device</span>
         </div>
@@ -568,7 +568,6 @@
 
       <div class="contact-links">
         <a href="mailto:Onazi75@gmail.com"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></svg><span>Onazi75@gmail.com</span><svg class="ic arr" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-        <a href="tel:+2349135827265"><svg class="ic" viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><span>+234 913 582 7265</span><svg class="ic arr" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         <a href="https://github.com/onazioj179-lab" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.3 4.3 0 00-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 00-6 0C6.3 3.6 5.3 3.9 5.3 3.9a4.3 4.3 0 00-.1 3.2A4.6 4.6 0 003.9 10.3c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg><span>github.com/onazioj179-lab</span><svg class="ic arr" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
         <a href="https://github.com/onazioj179-lab/pathmap" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/></svg><span>PathMap Repository</span><svg class="ic arr" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
       </div>
@@ -753,13 +752,13 @@
       const N=520,pos=new Float32Array(N*3);
       for(let i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*22;pos[i*3+1]=(Math.random()-.5)*12;pos[i*3+2]=(Math.random()-.5)*8;}
       const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
-      const dustMat=new THREE.PointsMaterial({size:.025,transparent:true});
+      const dustMat=new THREE.PointsMaterial({size:.028,transparent:true});
       const dust=new THREE.Points(pg,dustMat); scene.add(dust);
       // accent sparks
       const N2=90,pos2=new Float32Array(N2*3);
       for(let i=0;i<N2;i++){pos2[i*3]=(Math.random()-.5)*20;pos2[i*3+1]=(Math.random()-.5)*11;pos2[i*3+2]=(Math.random()-.5)*7;}
       const pg2=new THREE.BufferGeometry();pg2.setAttribute('position',new THREE.BufferAttribute(pos2,3));
-      const sparkMat=new THREE.PointsMaterial({size:.05,transparent:true});
+      const sparkMat=new THREE.PointsMaterial({size:.06,transparent:true});
       const sparks=new THREE.Points(pg2,sparkMat); scene.add(sparks);
       // wireframe icosahedron over the accent glow (right side)
       const icoMat=new THREE.LineBasicMaterial({transparent:true});
@@ -771,10 +770,10 @@
 
       function applyBgTheme(){
         const dark=darkMq.matches;
-        dustMat.color.setHex(dark?MESH_DARK:MESH_LIGHT); dustMat.opacity=dark?.45:.5;
-        icoMat.color.setHex(dark?MESH_DARK:MESH_LIGHT);  icoMat.opacity=dark?.08:.16;
-        sparkMat.color.setHex(dark?ACC_DARK:ACC_LIGHT);  sparkMat.opacity=dark?.8:.7;
-        coreMat.color.setHex(dark?ACC_DARK:ACC_LIGHT);   coreMat.opacity=dark?.22:.3;
+        dustMat.color.setHex(dark?MESH_DARK:MESH_LIGHT); dustMat.opacity=dark?.55:.6;
+        icoMat.color.setHex(dark?MESH_DARK:MESH_LIGHT);  icoMat.opacity=dark?.20:.32;
+        sparkMat.color.setHex(dark?ACC_DARK:ACC_LIGHT);  sparkMat.opacity=dark?.95:.9;
+        coreMat.color.setHex(dark?ACC_DARK:ACC_LIGHT);   coreMat.opacity=dark?.45:.55;
       }
       applyBgTheme();
       darkMq.addEventListener('change',applyBgTheme);

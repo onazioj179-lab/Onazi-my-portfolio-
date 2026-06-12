@@ -34,7 +34,7 @@ window.PROJECTS = {
       'Magnify watches your system live: real CPU, memory, network and running programs on one screen, in plain language. It scores every process and flags spyware, stalkerware, and connections to known bad servers.',
       'It checks your privacy — trackers, fingerprinting, and risky permissions (camera, microphone, location) — scanned right in the app, with clear do-this-next guidance.',
       'The Workspace maps how things connect: open any folder and Magnify turns it into a living map of how your files, documents, media and configs relate. See what changed, what matters, and what a change would affect — search everything, compare folders, and pin findings into saved investigations.',
-      'No fake data: everything you see is real and from your own device. If a signal isn’t available, Magnify says so instead of guessing. Proprietary software — not open source.'
+      'No fake data: everything you see is real and from your own device. If a signal isn’t available, Magnify says so instead of guessing.'
     ],
     features:['System Monitor','Privacy Scanner','Process Scoring','Spyware / Stalkerware Detection','Workspace Mapping','100% On-Device'],
     access:{ label:'Download', value:'Early Windows build (v0.8.2, x64) available now. Full GitHub release coming soon. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
