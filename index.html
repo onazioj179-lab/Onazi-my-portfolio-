@@ -606,6 +606,13 @@
   const HAS_GSAP = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
   const MOTION = HAS_GSAP && !REDUCED;
 
+  // Guarantee the load screen always clears, even if later JS throws on this device
+  (function(){ const l=document.getElementById('loader'); if(!l) return;
+    const hide=()=>l.classList.add('done');
+    if(document.readyState!=='loading') setTimeout(hide,500); else addEventListener('DOMContentLoaded',()=>setTimeout(hide,500));
+    setTimeout(hide,2500);
+  })();
+
   // Reveal on scroll (baseline — always runs; works with or without GSAP)
   const io=new IntersectionObserver((es)=>{
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
@@ -665,6 +672,7 @@
 
   // ===== MOTION (GSAP + Lenis) — graceful, reduced-motion aware =====
   if(MOTION){
+   try {
     document.documentElement.classList.add('js-motion');
     gsap.registerPlugin(ScrollTrigger);
 
@@ -734,6 +742,7 @@
     }
 
     // 3D hero background — particle field + wireframe geometry (Three.js)
+    try {
     const bg=document.getElementById('bg3d');
     if(bg && typeof THREE!=='undefined'){
       const headerEl=document.querySelector('header');
@@ -792,8 +801,16 @@
         renderer.render(scene,cam);
       });
     }
+    } catch(e3d){ /* 3D is decorative — never let it break the rest of the page */ }
 
     ScrollTrigger.refresh();
+   } catch(errMotion){
+    // Motion failed on this device — guarantee content is visible & interactive
+    document.documentElement.classList.remove('js-motion');
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    document.querySelectorAll('.statement-text .word').forEach(w=>w.classList.add('lit'));
+    document.querySelectorAll('.eyebrow, h1 .w, .lede, .meta-row .m, .scroll-cue').forEach(el=>{el.style.opacity='1';el.style.visibility='visible';el.style.transform='none';});
+   }
   } else {
     // No GSAP or reduced motion: ensure the statement reads fully lit
     document.querySelectorAll('.statement-text .word').forEach(w=>w.classList.add('lit'));
