@@ -1,5 +1,5 @@
 /* Single source of truth for project content — used by index.html (modal) and case.html (full page). */
-window.PROJECT_ORDER = ['dex','wallstudio','magnify','pathmap'];
+window.PROJECT_ORDER = ['dex','wallstudio','magnify','pathmap','aurum'];
 
 window.PROJECTS = {
   dex: {
@@ -57,5 +57,22 @@ window.PROJECTS = {
     features:['TypeScript','Python','End-to-End Encryption','Offline Routing (A* / Dijkstra)','Geofencing','Ghost Mode'],
     access:{ label:'Repository', value:'github.com/onazioj179-lab/pathmap' },
     link:{ href:'https://github.com/onazioj179-lab/pathmap', label:'github / pathmap' }
+  },
+  aurum: {
+    idx:'05', title:'Aurum', role:'Multiband saturation & mastering plugin',
+    tag:'Audio / Plugin', status:'Coming Soon',
+    summary:'A mastering-grade multiband saturator: drive four bands independently through tape, tube and transformer models, with one-dial character glue, full metering, and real source separation.',
+    body:[
+      'Aurum is a multiband saturation and mastering plugin. Drive any of four bands — LOW, LOW-MID, HI-MID, HIGH — independently through TAPE, TUBE or TRANSFORMER models. It stays transparent until you turn a knob.',
+      'Character is one dial for compression and makeup glue. Every band has voicing, solo and mute; plus high-pass / low-pass, stereo imaging (Mid / Side / Stereo / M+S), linear bypass, and output trim.',
+      'Metering covers short and integrated LUFS, peak and RMS, a loudness-target guide (Club / Stream / Apple / EBU), and a frequency-coloured spectrum. Key and BPM are estimated automatically when you load a track. Presets — factory and your own — save to disk and import/export as .json, with undo/redo and a recallable master history.',
+      'Export masters to WAV (16 / 24 / 32-bit, optional normalise), band stems (SUB / LOW / MID / HIGH), or separate into KICK / DRUMS / BASS / MELODY. Separation uses real HPSS — harmonic/percussive source separation by spectrogram median-filtering — pulling drums apart from melodic, tonal content, then splitting each by frequency.'
+    ],
+    features:['4-Band Saturation','Tape / Tube / Transformer','Character Glue','LUFS Metering','HPSS Stem Separation','Key + BPM Detect','Mid / Side Imaging','WAV / Stem Export'],
+    access:{ label:'Release', value:'GitHub release coming soon. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    gallery:[
+      { src:'assets/aurum/aurum.png', label:'Aurum — four-band saturation, character & mastering metering' }
+    ],
+    link:null
   }
 };
