@@ -60,7 +60,7 @@ window.PROJECTS = {
   },
   aurum: {
     idx:'05', title:'Aurum', role:'Multiband saturation & mastering plugin',
-    tag:'Audio / Plugin', status:'Coming Soon',
+    tag:'Audio / Plugin', status:'Available',
     summary:'A mastering-grade multiband saturator: drive four bands independently through tape, tube and transformer models, with one-dial character glue, full metering, and real source separation.',
     body:[
       'Aurum is a multiband saturation and mastering plugin. Drive any of four bands — LOW, LOW-MID, HI-MID, HIGH — independently through TAPE, TUBE or TRANSFORMER models. It stays transparent until you turn a knob.',
@@ -69,10 +69,11 @@ window.PROJECTS = {
       'Export masters to WAV (16 / 24 / 32-bit, optional normalise), band stems (SUB / LOW / MID / HIGH), or separate into KICK / DRUMS / BASS / MELODY. Separation uses real HPSS — harmonic/percussive source separation by spectrogram median-filtering — pulling drums apart from melodic, tonal content, then splitting each by frequency.'
     ],
     features:['4-Band Saturation','Tape / Tube / Transformer','Character Glue','LUFS Metering','HPSS Stem Separation','Key + BPM Detect','Mid / Side Imaging','WAV / Stem Export'],
-    access:{ label:'Release', value:'GitHub release coming soon. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    access:{ label:'Download', value:'Aurum 1.4.0 for Windows (x64) — available now. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
     gallery:[
-      { src:'assets/aurum/aurum.png', label:'Aurum — four-band saturation, character & mastering metering' }
+      { src:'assets/aurum/aurum.png',  label:'Aurum — four-band saturation, character & mastering metering' },
+      { src:'assets/aurum/aurum2.png', label:'Aurum — Stems view: live waveform, analog drive & loudness targeting' }
     ],
-    link:null
+    link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/aurum-v1.4.0/AURUM-Setup-1.4.0-x64.exe', label:'Download Aurum 1.4.0 · Windows x64' }
   }
 };
