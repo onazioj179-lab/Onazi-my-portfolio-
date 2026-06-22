@@ -1,5 +1,5 @@
 /* Single source of truth for project content — used by index.html (modal) and case.html (full page). */
-window.PROJECT_ORDER = ['dex','wallstudio','magnify','pathmap','aurum'];
+window.PROJECT_ORDER = ['dex','wallstudio','magnify','pathmap','aurum','sable'];
 
 window.PROJECTS = {
   dex: {
@@ -75,5 +75,19 @@ window.PROJECTS = {
       { src:'assets/aurum/aurum2.png', label:'Aurum — Stems view: live waveform, analog drive & loudness targeting' }
     ],
     link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/aurum-v1.4.0/AURUM-Setup-1.4.0-x64.exe', label:'Download Aurum 1.4.0 · Windows x64' }
+  },
+  sable: {
+    idx:'06', title:'Sable', role:'Analog-style software synthesizer',
+    tag:'Audio / Synth', status:'Coming Soon',
+    summary:'A powerful analog-style synthesizer that runs on your computer — the deep, warm sound of a classic hardware synth, without the hardware.',
+    body:[
+      'Sable is a powerful analog-style synthesizer that runs right on your computer. Internal complexity, surface-level simplicity — it brings the deep, warm sound of a classic hardware synth without the hardware. Big fat basses, soaring leads, lush pads and evolving textures, wrapped in a clean black-and-white interface that stays out of your way.',
+      'Play instantly with your computer keyboard, the on-screen piano, or any MIDI keyboard. Shape your sound with two main oscillators, a sub oscillator, three filter characters (warm, bright and open), four envelopes, three LFOs, and a 32-slot modulation system to connect anything to anything.',
+      'Add movement with a built-in arpeggiator and step sequencer that turn a single held chord into a full pattern. Polish on the master output with drive, chorus, delay, reverb and a bitcrusher — grit, space and shine. Save your work across 64 ready-made sounds plus unlimited slots of your own, and share sounds as files.',
+      'Controls are grouped into simple tabs — Sound, Filter, Env, LFO · Mod, FX, Arp · Seq, and Presets — so you only ever see what you need.'
+    ],
+    features:['2 Oscillators + Sub','3 Filter Characters','4 Envelopes · 3 LFOs','32-Slot Mod Matrix','Arp + Step Sequencer','Drive / Chorus / Delay / Reverb / Bitcrush','64 Presets + Unlimited','MIDI & On-Screen Keys'],
+    access:{ label:'Release', value:'Coming soon. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    link:null
   }
 };
