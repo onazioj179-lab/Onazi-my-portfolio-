@@ -66,7 +66,7 @@ window.PROJECTS = {
   },
   sable: {
     idx:'05', title:'Sable', role:'Analog-style software synthesizer',
-    tag:'Audio / Synth', status:'Coming Soon',
+    tag:'Audio / Synth', status:'Available',
     summary:'A powerful analog-style synthesizer that runs on your computer — the deep, warm sound of a classic hardware synth, without the hardware.',
     body:[
       'Sable is a powerful analog-style synthesizer that runs right on your computer. Internal complexity, surface-level simplicity — it brings the deep, warm sound of a classic hardware synth without the hardware. Big fat basses, soaring leads, lush pads and evolving textures, wrapped in a clean black-and-white interface that stays out of your way.',
@@ -75,7 +75,7 @@ window.PROJECTS = {
       'Controls are grouped into simple tabs — Sound, Filter, Env, LFO · Mod, FX, Arp · Seq, and Presets — so you only ever see what you need.'
     ],
     features:['2 Oscillators + Sub','3 Filter Characters','4 Envelopes · 3 LFOs','32-Slot Mod Matrix','Arp + Step Sequencer','Drive / Chorus / Delay / Reverb / Bitcrush','64 Presets + Unlimited','MIDI & On-Screen Keys'],
-    access:{ label:'Release', value:'Coming soon. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
-    link:null
+    access:{ label:'Download', value:'Sable 1.0.5 for Windows (x64) — available now. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/sable-v1.0.5/SABLE_1.0.5_x64-setup.exe', label:'Download Sable 1.0.5 · Windows x64' }
   }
 };
