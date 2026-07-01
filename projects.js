@@ -1,5 +1,5 @@
 /* Single source of truth for project content — used by index.html (modal) and case.html (full page). */
-window.PROJECT_ORDER = ['dex','wallstudio','magnify','pathmap','aurum','sable'];
+window.PROJECT_ORDER = ['dex','magnify','pathmap','aurum','sable'];
 
 window.PROJECTS = {
   dex: {
@@ -14,21 +14,9 @@ window.PROJECTS = {
     access:{ label:'Access', value:'Private project — a live walkthrough is available on request.' },
     link:null
   },
-  wallstudio: {
-    idx:'02', title:'Wall Studio', role:'iOS street-art drawing app',
-    tag:'iOS / Creative', status:'Shipped',
-    summary:'A professional-grade iOS drawing app built end-to-end in React JSX, with a custom brush engine and full layer management.',
-    body:[
-      'Wall Studio is a professional-grade iOS drawing app, built end-to-end in React JSX. The custom brush engine ships with an 8-preset library, a stabilizer, and pressure curves.',
-      'It includes a reference layer, full layer management, color history, aspect-ratio overlays, thumbnail undo history, complete auto-save, and PNG / JPEG / transparent export.'
-    ],
-    features:['React JSX','Canvas API','Brush Engine','Layer Management','Pressure Curves','Transparent Export'],
-    access:{ label:'Access', value:'Demo available on request.' },
-    link:null
-  },
   magnify: {
-    idx:'03', title:'Magnify', role:'Live System Monitor · Privacy Scanner · Workspace',
-    tag:'Desktop / Security', status:'Coming Soon',
+    idx:'02', title:'Magnify', role:'Live System Monitor · Privacy Scanner · Workspace',
+    tag:'Desktop / Security', status:'Available',
     summary:'A live system monitor, privacy scanner, and visual workspace for understanding your digital environment — all from real, on-device data.',
     body:[
       'Magnify watches your system live: real CPU, memory, network and running programs on one screen, in plain language. It scores every process and flags spyware, stalkerware, and connections to known bad servers.',
@@ -37,17 +25,17 @@ window.PROJECTS = {
       'No fake data: everything you see is real and from your own device. If a signal isn’t available, Magnify says so instead of guessing.'
     ],
     features:['System Monitor','Privacy Scanner','Process Scoring','Spyware / Stalkerware Detection','Workspace Mapping','100% On-Device'],
-    access:{ label:'Download', value:'Early Windows build (v0.8.2, x64) available now. Full GitHub release coming soon. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    access:{ label:'Download', value:'Magnify 1.9.6 for Windows (x64) — available now. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
     gallery:[
       { src:'assets/magnify/overview.png',    label:'Overview — live system dashboard, scan & report' },
       { src:'assets/magnify/observatory.png', label:'Observatory — environment & knowledge health' },
       { src:'assets/magnify/privacy.png',     label:'Privacy — risk score, permissions & trackers' },
       { src:'assets/magnify/priorities.png',  label:'Priorities — findings graph & impact ranking' }
     ],
-    link:{ href:'https://github.com/onazioj179-lab/dex-updates/releases/download/magnify-v0.8.2/Magnify_0.8.2_x64-setup.exe', label:'Download Magnify 0.8.2 · Windows x64' }
+    link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/magnify-v1.9.6/Magnify_1.9.6_x64-setup.exe', label:'Download Magnify 1.9.6 · Windows x64' }
   },
   pathmap: {
-    idx:'04', title:'PathMap', role:'Encrypted real-time location for private teams',
+    idx:'03', title:'PathMap', role:'Encrypted real-time location for private teams',
     tag:'Web / Security', status:'Commercial',
     summary:'A proprietary commercial location-tracking platform where the server only ever sees ciphertext — end-to-end encrypted by design.',
     body:[
@@ -59,7 +47,7 @@ window.PROJECTS = {
     link:{ href:'https://github.com/onazioj179-lab/pathmap', label:'github / pathmap' }
   },
   aurum: {
-    idx:'05', title:'Aurum', role:'Multiband saturation & mastering plugin',
+    idx:'04', title:'Aurum', role:'Multiband saturation & mastering plugin',
     tag:'Audio / Plugin', status:'Available',
     summary:'A mastering-grade multiband saturator: drive four bands independently through tape, tube and transformer models, with one-dial character glue, full metering, and real source separation.',
     body:[
@@ -77,7 +65,7 @@ window.PROJECTS = {
     link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/aurum-v1.4.0/AURUM-Setup-1.4.0-x64.exe', label:'Download Aurum 1.4.0 · Windows x64' }
   },
   sable: {
-    idx:'06', title:'Sable', role:'Analog-style software synthesizer',
+    idx:'05', title:'Sable', role:'Analog-style software synthesizer',
     tag:'Audio / Synth', status:'Coming Soon',
     summary:'A powerful analog-style synthesizer that runs on your computer — the deep, warm sound of a classic hardware synth, without the hardware.',
     body:[
