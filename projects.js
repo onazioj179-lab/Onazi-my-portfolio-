@@ -76,6 +76,9 @@ window.PROJECTS = {
     ],
     features:['2 Oscillators + Sub','3 Filter Characters','4 Envelopes · 3 LFOs','32-Slot Mod Matrix','Arp + Step Sequencer','Drive / Chorus / Delay / Reverb / Bitcrush','64 Presets + Unlimited','MIDI & On-Screen Keys'],
     access:{ label:'Download', value:'Sable 1.0.5 for Windows (x64) — available now. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    gallery:[
+      { src:'assets/sable/sable.png', label:'Sable — OSC panel: dual oscillators, sub osc & analog controls' }
+    ],
     link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/sable-v1.0.5/SABLE_1.0.5_x64-setup.exe', label:'Download Sable 1.0.5 · Windows x64' }
   }
 };
