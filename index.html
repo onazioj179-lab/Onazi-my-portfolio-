@@ -154,6 +154,9 @@
   .meta-row .m .v{font-family:var(--disp);font-weight:600;font-size:1.06rem}
   .scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--mut);display:flex;align-items:center;gap:8px;opacity:0;animation:rise 1s 1s forwards}
 
+  /* The cue is absolutely positioned, so on phones / short screens the stacked hero content runs into it */
+  @media(max-width:760px),(max-height:700px){.scroll-cue{display:none}}
+
   @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 
   /* SECTION SHELL */
