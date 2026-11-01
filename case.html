@@ -192,6 +192,8 @@
 
   if(P){
     document.title = P.title + ' — Onazi Treasure OJ';
+    const md = document.querySelector('meta[name="description"]');
+    if(md && P.summary) md.setAttribute('content', P.title + ' — ' + P.summary);
     document.getElementById('c-idx').textContent = 'P / '+P.idx + (P.status?'  ·  '+P.status:'');
     document.getElementById('c-title').textContent = P.title;
     document.getElementById('c-role').textContent = P.role;

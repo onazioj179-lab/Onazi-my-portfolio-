@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
 <title>Onazi Treasure OJ — Engineer &amp; Creative Technologist</title>
-<meta name="description" content="Onazi Treasure OJ — full-stack engineer & creative technologist. 4+ years shipping production-grade web, mobile, and desktop applications. Architecture, engineering, UI, and deployment.">
+<meta name="description" content="Onazi Treasure OJ — full-stack engineer &amp; creative technologist. 8+ years shipping production-grade web, mobile, and desktop applications. Architecture, engineering, UI, and deployment.">
 <meta name="author" content="Onazi Treasure OJ">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0B">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
@@ -22,6 +22,24 @@
 <meta name="twitter:title" content="Onazi Treasure OJ — Engineer & Creative Technologist">
 <meta name="twitter:description" content="Full-stack engineer shipping production-grade web, mobile, and desktop applications.">
 <meta name="twitter:image" content="https://onazioj179-lab.github.io/Onazi-my-portfolio-/og.svg">
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Onazi Treasure OJ",
+  "jobTitle":"Full-Stack Engineer & Creative Technologist",
+  "url":"https://onazioj179-lab.github.io/Onazi-my-portfolio-/",
+  "sameAs":["https://github.com/onazioj179-lab"],
+  "address":{"@type":"PostalAddress","addressLocality":"Abuja","addressCountry":"NG"},
+  "knowsAbout":["TypeScript","Rust","Python","React","Electron","Systems Architecture","Audio Plugins","Legal Tech"]
+}
+</script>
+<noscript><style>
+  .reveal,.eyebrow,h1 .l,.lede,.meta-row,.scroll-cue{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
+  #loader{display:none}
+  .statement-text .word{opacity:1}
+</style></noscript>
 <!-- Favicon: OJ monogram (adapts to system light/dark) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cstyle%3Erect%7Bfill:%230A0A0B%7Dtext%7Bfill:%2300C8FF%7D@media(prefers-color-scheme:light)%7Brect%7Bfill:%23FFFFFF%7Dtext%7Bfill:%230086B3%7D%7D%3C/style%3E%3Crect%20width='64'%20height='64'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Arial,Helvetica,sans-serif'%20font-weight='800'%20font-size='32'%3EOJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -317,6 +335,15 @@
   .visual .vtop,.visual>.tag{position:relative;z-index:1}
   .visual .open-cue{position:absolute;right:24px;bottom:24px;z-index:1;display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);opacity:0;transform:translateX(-6px);transition:opacity .3s,transform .3s,color .3s}
   .visual:hover .open-cue{opacity:1;transform:none;color:var(--accent)}
+  @media(hover:none){.visual .open-cue{opacity:1;transform:none;color:var(--accent)}}
+  .visual:focus-visible,.cform input:focus-visible,.cform button:focus-visible,.contact-links a:focus-visible,.p-actions a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* Per-card actions (injected from projects.js so links never drift) */
+  .p-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .p-actions a{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:13px 20px;border:1px solid var(--line);border-radius:var(--r);color:var(--paper);transition:border-color .2s,color .2s,transform .15s,opacity .2s}
+  .p-actions a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .p-actions a.primary{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+  .p-actions a.primary:hover{color:var(--ink);opacity:.92}
 
   /* ===== MODAL (project quick-view) ===== */
   .modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:28px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
@@ -363,7 +390,7 @@
 <div class="cursor-dot" id="cursor"></div>
 <div class="grain" aria-hidden="true"></div>
 
-<nav>
+<nav aria-label="Primary">
   <div class="brand">Onazi Treasure OJ</div>
   <div class="nav-hud" aria-hidden="true"><span class="live"></span><span id="hud">ABV --:--:--</span></div>
   <div class="links">
@@ -393,7 +420,7 @@
       <span class="line"><span class="w">Onazi</span> <span class="w">Treasure</span></span>
       <span class="line"><span class="w ac">OJ</span></span>
     </h1>
-    <p class="lede">Full-stack engineer with 4+ years shipping production-grade applications across web, mobile, and desktop. I own the whole lifecycle: architecture, engineering, UI, and deployment.</p>
+    <p class="lede">Full-stack engineer with 8+ years shipping production-grade applications across web, mobile, and desktop. I own the whole lifecycle: architecture, engineering, UI, and deployment.</p>
     <div class="meta-row">
       <div class="m"><div class="k mono">Discipline</div><div class="v">Engineering &amp; Creative Tech</div></div>
       <div class="m"><div class="k mono">Stack</div><div class="v">TypeScript &middot; Rust &middot; Python</div></div>
@@ -415,10 +442,10 @@
 <div class="stats-band">
   <div class="wrap">
     <div class="stats reveal">
-      <div class="stat"><div class="n" data-target="4" data-suffix="+">0</div><div class="l mono">Years Shipping</div></div>
+      <div class="stat"><div class="n" data-target="8" data-suffix="+">0</div><div class="l mono">Years Shipping</div></div>
       <div class="stat"><div class="n" data-target="20" data-suffix="+">0</div><div class="l mono">Inner Apps in DEX</div></div>
       <div class="stat"><div class="n" data-target="5" data-suffix="">0</div><div class="l mono">Domains</div></div>
-      <div class="stat"><div class="n" data-target="4" data-suffix="">0</div><div class="l mono">Flagship Projects</div></div>
+      <div class="stat"><div class="n" data-target="5" data-suffix="">0</div><div class="l mono">Flagship Projects</div></div>
     </div>
   </div>
 </div>
@@ -607,12 +634,12 @@
       <!-- CONTACT FORM (connected to Formspree) -->
       <form class="cform" action="https://formspree.io/f/xeewkdkp" method="POST" id="cform">
         <div class="row">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Your email" required>
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" autocomplete="name" required>
+          <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email" required>
         </div>
-        <textarea name="message" placeholder="Tell me about the project" required></textarea>
+        <textarea name="message" placeholder="Tell me about the project" aria-label="Tell me about the project" required></textarea>
         <button type="submit">Send Message</button>
-        <div class="note" id="form-note">Direct lines below, or send a message here.</div>
+        <div class="note" id="form-note" role="status" aria-live="polite">Direct lines below, or send a message here.</div>
       </form>
 
       <div class="contact-links">
@@ -894,6 +921,24 @@
     });
     modal.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',closeModal));
     addEventListener('keydown',e=>{ if(e.key==='Escape'&&modal.classList.contains('open')) closeModal(); });
+  }
+
+  // ===== PROJECT CARD ACTIONS — case study + download, built from projects.js =====
+  if(window.PROJECTS){
+    const arrow='<svg class="ic" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+    document.querySelectorAll('.project[data-project]').forEach(card=>{
+      const id=card.getAttribute('data-project'), p=window.PROJECTS[id], feat=card.querySelector('.feat');
+      if(!p||!feat) return;
+      const box=document.createElement('div'); box.className='p-actions';
+      if(p.link){
+        const dl=document.createElement('a'); dl.className='primary'; dl.href=p.link.href;
+        dl.target='_blank'; dl.rel='noopener'; dl.innerHTML=p.link.label+arrow;
+        box.appendChild(dl);
+      }
+      const cs=document.createElement('a'); cs.href='case.html?p='+id; cs.innerHTML='Case study'+arrow;
+      box.appendChild(cs);
+      feat.after(box);
+    });
   }
 
   // Internal links navigate normally — no transition overlay.
