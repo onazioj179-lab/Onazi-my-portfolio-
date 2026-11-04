@@ -1,5 +1,5 @@
 /* Single source of truth for project content — used by index.html (modal) and case.html (full page). */
-window.PROJECT_ORDER = ['dex','magnify','pathmap','aurum','sable'];
+window.PROJECT_ORDER = ['dex','magnify','pathmap','aurum','sable','hamma'];
 
 window.PROJECTS = {
   dex: {
@@ -57,12 +57,25 @@ window.PROJECTS = {
       'Export masters to WAV (16 / 24 / 32-bit, optional normalise), band stems (SUB / LOW / MID / HIGH), or separate into KICK / DRUMS / BASS / MELODY. Separation uses real HPSS — harmonic/percussive source separation by spectrogram median-filtering — pulling drums apart from melodic, tonal content, then splitting each by frequency.'
     ],
     features:['4-Band Saturation','Tape / Tube / Transformer','Character Glue','LUFS Metering','HPSS Stem Separation','Key + BPM Detect','Mid / Side Imaging','WAV / Stem Export'],
-    access:{ label:'Download', value:'Aurum 1.4.0 for Windows (x64) — available now. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
+    access:{ label:'Download', value:'Aurum 1.5.8 for Windows (x64) — available now. Created by Onazi Treasure OJ · © 2026 · Proprietary.' },
     gallery:[
       { src:'assets/aurum/aurum.png',  label:'Aurum — four-band saturation, character & mastering metering' },
       { src:'assets/aurum/aurum2.png', label:'Aurum — Stems view: live waveform, analog drive & loudness targeting' }
     ],
-    link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/aurum-v1.4.0/AURUM-Setup-1.4.0-x64.exe', label:'Download Aurum 1.4.0 · Windows x64' }
+    link:{ href:'https://github.com/onazioj179-lab/TOOLS-REPO/releases/download/aurum-v1.5.8/AURUM-Setup-1.5.8-x64.exe', label:'Download Aurum 1.5.8 · Windows x64' }
+  },
+  hamma: {
+    idx:'06', title:'HAMMA', role:'Local file compression & archive workspace',
+    tag:'Web / File Tools', status:'Open Source',
+    summary:'A free local workspace for file compression, archive extraction, and media conversion, with SPK restoration and searchable history.',
+    body:[
+      'HAMMA brings compression, extraction, conversion, and downloads into one local file workspace. Add files or folders, choose an archive format, and track each operation through a shared history.',
+      'Standard archive jobs run through a local processor, while SPK compression and restoration run in the browser. The workspace includes search, measured compression savings, and controls for retrying or cancelling jobs.',
+      'Files stay on your device: standard operations use the local service and temporary local storage. The public repository includes setup instructions; this is a self-hosted workspace rather than a hosted cloud service. Created by Onazi Treasure OJ and released under the MIT license.'
+    ],
+    features:['Local Processing','File Compression','Archive Extraction','SPK Restoration','Media Conversion','Searchable History'],
+    access:{ label:'Source Code', value:'Free and open source under the MIT license. Run locally using the setup instructions on GitHub.' },
+    link:{ href:'https://github.com/onazioj179-lab/Hamma-', label:'View HAMMA on GitHub' }
   },
   sable: {
     idx:'05', title:'Sable', role:'Analog-style software synthesizer',
