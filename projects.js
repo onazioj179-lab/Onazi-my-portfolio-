@@ -69,12 +69,14 @@ window.PROJECTS = {
     tag:'Web / File Tools', status:'Open Source',
     summary:'A free local workspace for file compression, archive extraction, and media conversion, with SPK restoration and searchable history.',
     body:[
-      'HAMMA brings compression, extraction, conversion, and downloads into one local file workspace. Add files or folders, choose an archive format, and track each operation through a shared history.',
-      'Standard archive jobs run through a local processor, while SPK compression and restoration run in the browser. The workspace includes search, measured compression savings, and controls for retrying or cancelling jobs.',
-      'Files stay on your device: standard operations use the local service and temporary local storage. The public repository includes setup instructions; this is a self-hosted workspace rather than a hosted cloud service. Created by Onazi Treasure OJ and released under the MIT license.'
+      'HAMMA brings compression, extraction, conversion, and downloads into one local file workspace. Add files or folders, choose an archive format, and track each operation through a single searchable history.',
+      'Standard formats — ZIP, TAR, GZIP, BZIP2 and XZ — run as background jobs on a local processor with verified downloads, resumable uploads, and retry / cancel controls. SPK, its own archive format, compresses and restores right in the browser, and both engines share the same Add Files / Add Folder flow.',
+      'An Overview page shows measured compression savings across processor jobs and browser SPK records, while History keeps a 500-record log with colored operation tags and unique IDs. Optional FFmpeg support adds media conversion, and SHANTE CORE, the native engine, adds verified Zstandard.',
+      'Files stay on your device. Free local accounts keep passwords hashed with scrypt and sessions in HttpOnly cookies, and no file contents are sent to an AI service or third party. On Windows, double-click Start HAMMA.cmd to build, launch and open it; phones on the same Wi-Fi can connect through the local network.',
+      'Built on TypeScript, Rust and Python. This is a self-hosted workspace rather than a hosted cloud service. Created by Onazi Treasure OJ and released under the MIT license.'
     ],
-    features:['Local Processing','File Compression','Archive Extraction','SPK Restoration','Media Conversion','Searchable History'],
-    access:{ label:'Source Code', value:'Free and open source under the MIT license. Run locally using the setup instructions on GitHub.' },
+    features:['Local Processing','ZIP / TAR / GZIP / BZIP2 / XZ','SPK Restoration','Media Conversion','Resumable Uploads','Searchable History','Local Accounts','MIT Licensed'],
+    access:{ label:'Source Code', value:'Free and open source under the MIT license. Requires Node.js 22.12+ and Python 3.11+. Clone it, run npm ci and npm run start:local, then open http://127.0.0.1:5010 — full steps are in the README.' },
     link:{ href:'https://github.com/onazioj179-lab/Hamma-', label:'View HAMMA on GitHub' }
   },
   sable: {
